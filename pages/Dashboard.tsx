@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { Box, Heading, Text, Flex, Button, Link } from '@chakra-ui/react';
+import Layout from '../components/Layout';
 
 const Dashboard = () => {
   return (
@@ -9,9 +10,9 @@ const Dashboard = () => {
         <meta name="description" content="Your Gaia Dashboard" />
       </Head>
 
-      <Box as="main">
+      <Layout>
         <Heading>Gaia DAO Dashboard</Heading>
-      </Box>
+      </Layout>
     </>
   );
 };
