@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { Box, Heading, Text, Flex, Button, Link } from '@chakra-ui/react';
+import Layout from '../components/Layout';
 
 const Stake = () => {
   return (
@@ -9,9 +10,9 @@ const Stake = () => {
         <meta name="description" content="Stake your $GAIA" />
       </Head>
 
-      <Box as="main">
-        <Heading>Gaia DAO</Heading>
-      </Box>
+      <Layout>
+        <Heading>Gaia DAO Staking</Heading>
+      </Layout>
     </>
   );
 };
