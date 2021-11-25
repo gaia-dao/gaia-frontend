@@ -90,7 +90,6 @@ const initializeWalletStore = (): IWallet => {
       type: Actions.RESET_WEB3_PROVIDER,
     });
   }, [provider]);
-
   // Auto connect to the cached provider
   useEffect(() => {
     if (web3Modal.cachedProvider) {

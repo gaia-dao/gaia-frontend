@@ -28,9 +28,7 @@ const theme = extendTheme({
 function GaiaApp({ Component, pageProps }) {
   return (
     <ChakraProvider theme={theme}>
-      <WalletProvider>
-        <Component {...pageProps} />
-      </WalletProvider>
+      <Component {...pageProps} />
     </ChakraProvider>
   );
 }
