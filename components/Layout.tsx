@@ -21,6 +21,7 @@ import {
   MenuDivider,
   MenuItem,
   MenuList,
+  Button,
 } from '@chakra-ui/react';
 import { IconType } from 'react-icons';
 import { BiWalletAlt, BiMoon } from 'react-icons/bi';
@@ -34,6 +35,9 @@ import {
   FiBell,
   FiChevronDown,
 } from 'react-icons/fi';
+import { useWalletProvider } from '../hooks/WalletProvider';
+import { connected } from 'process';
+import { truncateAddress } from '../utils';
 
 interface LinkItemProps {
   name: string;
@@ -66,6 +70,7 @@ const Sidebar = () => {
 };
 
 const Layout = ({ children }: { children: ReactNode }) => {
+  const { connect, disconnect, address } = useWalletProvider();
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
@@ -169,6 +174,8 @@ interface MobileProps extends FlexProps {
   onOpen: () => void;
 }
 const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
+  const { connect, disconnect, address, connected } = useWalletProvider();
+  console.log(address, connected);
   return (
     <Flex
       ml={{ base: 0, md: 60 }}
@@ -251,12 +258,17 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
             </MenuList>
           </Menu>
         </Flex>
-        <IconButton
-          size="lg"
-          variant="ghost"
-          aria-label="open menu"
-          icon={<BiWalletAlt />}
-        />
+        {connected ? (
+          <Button onClick={disconnect}>{truncateAddress(address, 8)}</Button>
+        ) : (
+          <IconButton
+            onClick={connect}
+            size="lg"
+            variant="ghost"
+            aria-label="open menu"
+            icon={<BiWalletAlt />}
+          />
+        )}
       </HStack>
     </Flex>
   );

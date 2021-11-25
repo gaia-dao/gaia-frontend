@@ -1,5 +1,6 @@
-// import '../styles/globals.css';
+import '../styles/globals.css';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
+import { WalletProvider } from '../hooks/WalletProvider';
 
 const theme = extendTheme({
   fonts: {
@@ -8,19 +9,17 @@ const theme = extendTheme({
   },
   colors: {
     transparent: 'transparent',
-    // black: '#000',
-    // white: '#FAE9D1',
-    // whiteAlpha: {
-    //   900: '#FAE9D1',
-    // },
-    // gray: {
-    //   700: '#1c1c1c',
-    //   800: '#000',
-    // },
+    brand: {
+      primary: '#262727',
+      secondary: '#FFFFFF',
+      tertiary: '#93855B',
+      lightBrown: '#BBAD88',
+      accentBrown: '#E4E3D8',
+    },
   },
   config: {
     initialColorMode: 'dark',
-    useSystemColorMode: true,
+    useSystemColorMode: false,
   },
 });
 
@@ -29,7 +28,9 @@ const theme = extendTheme({
 function GaiaApp({ Component, pageProps }) {
   return (
     <ChakraProvider theme={theme}>
-      <Component {...pageProps} />
+      <WalletProvider>
+        <Component {...pageProps} />
+      </WalletProvider>
     </ChakraProvider>
   );
 }
