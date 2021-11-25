@@ -175,7 +175,6 @@ interface MobileProps extends FlexProps {
 }
 const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
   const { connect, disconnect, address, connected } = useWalletProvider();
-  console.log(address, connected);
   return (
     <Flex
       ml={{ base: 0, md: 60 }}

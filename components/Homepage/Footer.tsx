@@ -1,4 +1,4 @@
-import { Box, HStack } from '@chakra-ui/layout';
+import { Box, HStack, Link } from '@chakra-ui/layout';
 import React from 'react';
 import { SiDiscord, SiTwitter, SiGithub } from 'react-icons/si';
 
@@ -22,7 +22,9 @@ export const Footer = () => {
       <HStack spacing="24px">
         <SiDiscord size="25px" />
         <SiTwitter size="25px" />
-        <SiGithub size="25px" />
+        <Link href="https://github.com/gaia-dao">
+          <SiGithub size="25px" />
+        </Link>
       </HStack>
     </Box>
   );
