@@ -35,7 +35,7 @@ import {
   FiBell,
   FiChevronDown,
 } from 'react-icons/fi';
-import { useWalletProvider } from '../hooks/WalletProvider';
+import { useWalletProvider, WalletProvider } from '../hooks/WalletProvider';
 import { connected } from 'process';
 import { truncateAddress } from '../utils';
 
@@ -69,8 +69,7 @@ const Sidebar = () => {
   );
 };
 
-const Layout = ({ children }: { children: ReactNode }) => {
-  const { connect, disconnect, address } = useWalletProvider();
+const Inner = ({ children }: { children: ReactNode }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
@@ -97,6 +96,14 @@ const Layout = ({ children }: { children: ReactNode }) => {
         {children}
       </Box>
     </Box>
+  );
+};
+
+export const Layout = ({ children }: { children: ReactNode }) => {
+  return (
+    <WalletProvider>
+      <Inner>{children}</Inner>
+    </WalletProvider>
   );
 };
 
