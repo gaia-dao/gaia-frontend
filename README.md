@@ -5,7 +5,7 @@
 https://gaia-frontend.vercel.app/
 
 ## Design Inspiration
-![Solar Punk](public/solarpunk.png)
+![Solar Punk](/public/images/solarpunk.png)
 
 [Solarpunk Reference](https://www.figma.com/file/qJ0bLuuTqPlVrKlPpeGDJZ/GaiaDAO?node-id=25%3A8)
 

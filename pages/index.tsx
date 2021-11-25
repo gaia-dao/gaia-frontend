@@ -56,18 +56,21 @@ const Homepage = () => {
               top="220"
               width="500px"
               src="./images/homepage-1.png"
+              alt="Wooded Streets"
             />
             <Image
               position="absolute"
               right="320"
               width="400px"
               src="./images/homepage-2.png"
+              alt="Overgrown Town"
             />
             <Image
               position="absolute"
               right="-50"
               width="500px"
               src="./images/homepage-3.png"
+              alt="Huge Tree"
             />
           </Box>
         </Box>
@@ -99,6 +102,7 @@ const Homepage = () => {
           <Image
             style={{ width: '100%', height: '100%', objectFit: 'cover' }}
             src="./images/homepage-banner.png"
+            alt="Future City Under Dam"
           />
         </Box>
       </Box>
