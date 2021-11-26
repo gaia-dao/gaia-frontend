@@ -10,11 +10,7 @@ const Homepage = () => {
     <Box display="flex" minH="100vh" flexDir="column">
       <Head>
         <title>Gaia DAO</title>
-        {/* TODO Fix Desc */}
-        <meta
-          name="description"
-          content="Reclaming Mother Earth through bonded crypto"
-        />
+        <meta name="description" content="Mother Earth’s Olympus Fork" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
@@ -26,9 +22,6 @@ const Homepage = () => {
       >
         <Box display="inline-flex" pt="50" justifyContent="space-between">
           <Box
-            backgroundColor={[null, null, null, 'brand.lightBrown']}
-            borderRadius={[null, null, null, '8px']}
-            boxShadow={[null, null, null, '2xl']}
             px={['10px', '6']}
             py={[null, '6']}
             maxWidth={[null, null, null, '450px', '600px']}
@@ -42,11 +35,10 @@ const Homepage = () => {
               fontWeight="black"
               color="brand.primary"
             >
-              Gaia DAO
+              Gaia
             </Text>
             <Text fontSize="3xl" color="brand.primary">
-              Reclaiming Mother Earth through bonded Rainforests, Wetlands, and
-              Great Plains
+              Mother Earth’s Olympus Fork
             </Text>
           </Box>
           <Box display={['none', 'none', 'none', 'block', 'block', 'block']}>
@@ -76,7 +68,7 @@ const Homepage = () => {
         </Box>
         <Stack
           direction={['column', null, 'row']}
-          spacing={['24px', null, '48px']}
+          spacing={['24px', null, '40px']}
           display={['flex']}
           flexDirection={['column', null, 'row']}
           position={['relative', null, 'absolute']}
@@ -84,9 +76,9 @@ const Homepage = () => {
           justifyContent="center"
         >
           {[
-            { heading: '$1,256', subheading: '$GAIA' },
-            { heading: '52,343%', subheading: 'Current APY' },
-            { heading: '15,000', subheading: 'Acres of Reclaimed Land' },
+            { heading: '99.0%', subheading: 'Total $GAIA Staked' },
+            { heading: '$534,343,322.44', subheading: 'Treasury Balance' },
+            { heading: '$4,353,322.22', subheading: 'Total Value Locked' },
           ].map((item, idx) => (
             <Box
               key={idx}

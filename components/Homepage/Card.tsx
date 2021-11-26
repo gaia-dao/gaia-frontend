@@ -11,9 +11,12 @@ interface ICard {
 export const Card: FC<ICard> = ({ heading, subheading, style }) => {
   return (
     <Box
+      bgImage="url('./images/noise.png')"
+      bgPosition="center"
+      bgRepeat="repeat"
       sx={{
         boxShadow: '2xl',
-        backgroundColor: 'brand.primary',
+        backgroundColor: 'brand.accentBrown',
         width: '100%',
         height: '100%',
         px: '12',
@@ -28,8 +31,10 @@ export const Card: FC<ICard> = ({ heading, subheading, style }) => {
         ...style,
       }}
     >
-      <Text fontSize="4xl">{heading}</Text>
       <Text fontSize="l">{subheading}</Text>
+      <Text fontSize="4xl" fontWeight={900}>
+        {heading}
+      </Text>
     </Box>
   );
 };

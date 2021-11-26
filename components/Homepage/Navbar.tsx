@@ -1,6 +1,7 @@
 import { Box, Button, HStack, Link, Text } from '@chakra-ui/react';
 import router from 'next/router';
 import React from 'react';
+
 interface Props {}
 
 export const Navbar = () => {
@@ -20,12 +21,17 @@ export const Navbar = () => {
           GAIA DAO
         </Text>
       </Link>
-      <HStack spacing="24px" fontWeight="bold">
-        <Link href="/bond">
-          <Text>Bond</Text>
-        </Link>
+      <HStack
+        spacing="24px"
+        fontWeight="bold"
+        textTransform="uppercase"
+        fontSize={14}
+      >
         <Link href="/stake">
           <Text>Stake</Text>
+        </Link>
+        <Link href="/bond">
+          <Text>Bond</Text>
         </Link>
         <Text>Learn more</Text>
         <Button
