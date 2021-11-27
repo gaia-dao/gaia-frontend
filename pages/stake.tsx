@@ -12,6 +12,7 @@ const Stake = () => {
 
       <Layout>
         <Heading>Gaia DAO Staking</Heading>
+        <Box p={100}></Box>
       </Layout>
     </>
   );

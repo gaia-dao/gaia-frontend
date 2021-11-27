@@ -9,6 +9,7 @@ import {
   VStack,
   Icon,
   useColorModeValue,
+  useColorMode,
   Link,
   Drawer,
   DrawerContent,
@@ -116,7 +117,7 @@ interface SidebarProps extends BoxProps {
 const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
   return (
     <Box
-      transition="3s ease"
+      transition="0.3s ease"
       bg={useColorModeValue('white', 'gray.900')}
       borderRight="1px"
       borderRightColor={useColorModeValue('gray.200', 'gray.700')}
@@ -182,6 +183,7 @@ interface MobileProps extends FlexProps {
 }
 const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
   const { connect, disconnect, address, connected } = useWalletProvider();
+  const { colorMode, toggleColorMode } = useColorMode();
   return (
     <Flex
       ml={{ base: 0, md: 60 }}
@@ -196,10 +198,10 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
     >
       <IconButton
         display={{ base: 'flex', md: 'none' }}
-        onClick={onOpen}
         variant="outline"
         aria-label="open menu"
         icon={<BiMoon />}
+        onClick={toggleColorMode}
       />
       <IconButton
         display={{ base: 'flex', md: 'none' }}
@@ -228,8 +230,9 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
         <IconButton
           size="lg"
           variant="ghost"
-          aria-label="open menu"
+          aria-label="Toggle Color Mode"
           icon={<BiMoon />}
+          onClick={toggleColorMode}
         />
         <Flex alignItems={'center'}>
           <Menu>
