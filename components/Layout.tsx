@@ -53,27 +53,15 @@ const LinkItems: Array<LinkItemProps> = [
   { name: 'Documentation', link: 'documentation', icon: FiSettings },
 ];
 
-const TopBar = () => {
-  return (
-    <Box>
-      <Text>Top Bar</Text>
-      <BiWalletAlt />
-    </Box>
-  );
-};
-
-const Sidebar = () => {
-  return (
-    <Box>
-      <Text>Sidebar</Text>
-    </Box>
-  );
-};
-
 const Inner = ({ children }: { children: ReactNode }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
-    <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
+    <Flex
+      minH="100vh"
+      direction="column"
+      height="full"
+      bg={useColorModeValue('gray.100', 'gray.900')}
+    >
       <SidebarContent
         onClose={() => onClose}
         display={{ base: 'none', md: 'block' }}
@@ -91,12 +79,22 @@ const Inner = ({ children }: { children: ReactNode }) => {
           <SidebarContent onClose={onClose} />
         </DrawerContent>
       </Drawer>
-      {/* mobilenav */}
       <MobileNav onOpen={onOpen} />
-      <Box as="main" ml={{ base: 0, md: 60 }} p="4">
+      <Flex
+        as="main"
+        ml={{ base: 0, md: 60 }}
+        p="20"
+        // bgImage="url('./images/solarpunk.png')"
+        bgPosition="cover+"
+        bgRepeat="no-repeat"
+        flexDirection="column"
+        style={{
+          background: `linear-gradient(108.46deg, #000000 6.95%, rgba(0, 0, 0, 0) 100%), url('./images/solarpunk.png') left top / cover`,
+        }}
+      >
         {children}
-      </Box>
-    </Box>
+      </Flex>
+    </Flex>
   );
 };
 
