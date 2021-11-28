@@ -23,6 +23,7 @@ import {
   MenuItem,
   MenuList,
   Button,
+  Image,
 } from '@chakra-ui/react';
 import { IconType } from 'react-icons';
 import { BiWalletAlt, BiMoon } from 'react-icons/bi';
@@ -126,9 +127,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
     >
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
         <Link href="/">
-          <Text fontSize="2xl" fontWeight="black">
-            GAIA DAO
-          </Text>
+          <Image src="./gaia-logo.svg" boxSize="100px" alt="GAIA Logo" />
         </Link>
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
