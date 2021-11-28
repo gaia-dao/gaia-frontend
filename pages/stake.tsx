@@ -7,6 +7,16 @@ import {
   Button,
   Link,
   SimpleGrid,
+  IconButton,
+  Tabs,
+  TabList,
+  Tab,
+  TabPanels,
+  TabPanel,
+  HStack,
+  VStack,
+  Container,
+  Divider,
 } from '@chakra-ui/react';
 import { BiWalletAlt } from 'react-icons/bi';
 import Layout from '../components/Layout';
@@ -28,7 +38,7 @@ const Stake = () => {
           borderRadius="lg"
           mb={20}
         >
-          <Heading>Single Spawn (Staking with Gaia)</Heading>
+          <Heading>Single Stake</Heading>
           <Text mb="8">
             <b>7 hrs, 10 min</b> until next rebase
           </Text>
@@ -53,9 +63,80 @@ const Stake = () => {
             </Box>
           </SimpleGrid>
           <Flex justify="center" mt="10">
-            <Button bg="brand.light" color="brand.dark" icon={<BiWalletAlt />}>
-              Connect Wallet
-            </Button>
+            <Tabs w="100%">
+              <TabList>
+                <Tab>Stake</Tab>
+                <Tab>Unstake</Tab>
+              </TabList>
+
+              <TabPanels w="100%">
+                <TabPanel>
+                  <HStack spacing={10} mb="8">
+                    <VStack>
+                      <Text>
+                        First time staking <b>GAIA</b>?
+                      </Text>
+                      <Text>Please approve GAIA DAO to stake your $GAIA.</Text>
+                    </VStack>
+                    <Button variantColor="blue" variant="outline" size="lg">
+                      Approve
+                    </Button>
+                  </HStack>
+                  <Container>
+                    <HStack justifyContent="space-between" mb="4">
+                      <Text fontSize="xl">Unstaked Balance</Text>
+                      <Text fontSize="xl" fontWeight="bold">
+                        0 GAIA
+                      </Text>
+                    </HStack>
+                    <HStack justifyContent="space-between" mb="4">
+                      <Text fontSize="xl">Staked Balance</Text>
+                      <Text fontSize="xl" fontWeight="bold">
+                        0 sGAIA
+                      </Text>
+                    </HStack>
+                    <HStack justifyContent="space-between" mb="4">
+                      <Text opacity="0.6" ml="4">
+                        Single Staking
+                      </Text>
+                      <Text opacity="0.6" fontWeight="bold">
+                        0 GAIA
+                      </Text>
+                    </HStack>
+                    <HStack justifyContent="space-between" mb="4">
+                      <Text opacity="0.6" ml="4">
+                        Wrapped Balance
+                      </Text>
+                      <Text opacity="0.6" fontWeight="bold">
+                        0 wsGAIA
+                      </Text>
+                    </HStack>
+                    <Divider mb="4" />
+                    <HStack justifyContent="space-between" mb="4">
+                      <Text fontSize="xl">Next Reward Amount</Text>
+                      <Text fontSize="xl" fontWeight="bold">
+                        0 sGAIA
+                      </Text>
+                    </HStack>
+                    <HStack justifyContent="space-between" mb="4">
+                      <Text fontSize="xl">Next Reward Yield</Text>
+                      <Text fontSize="xl" fontWeight="bold">
+                        0.53432%
+                      </Text>
+                    </HStack>
+                    <HStack justifyContent="space-between" mb="4">
+                      <Text fontSize="xl">ROI(5-Day Rate)</Text>
+                      <Text fontSize="xl" fontWeight="bold">
+                        9.0432%
+                      </Text>
+                    </HStack>
+                  </Container>
+                </TabPanel>
+                <TabPanel>
+                  <p>two!</p>
+                </TabPanel>
+              </TabPanels>
+            </Tabs>
           </Flex>
         </Box>
         <Box
@@ -64,7 +145,7 @@ const Stake = () => {
           border="2px solid black"
           borderRadius="lg"
         >
-          <Heading>Spawn Pools(Farm)</Heading>
+          <Heading>Farm Pool</Heading>
           <Text mb="8">Farm your Gaia</Text>
           <TableContent />
         </Box>

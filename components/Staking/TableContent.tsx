@@ -67,10 +67,9 @@ export const columns = [
     Header: 'Link',
     accessor: 'link',
     Cell: function StatusCell(data: any) {
-      console.log(data);
       return (
-        <Link href={data} isExternal rightIcon={<BiExit />} whiteSpace="nowrap">
-          Buy on Uniswap <BiExit />
+        <Link href={data} passhref={true} isExternal>
+          <Button rightIcon={<BiExit />}>Buy on Uniswap</Button>
         </Link>
       );
     },

@@ -1,9 +1,19 @@
 import Head from 'next/head';
-import { Box, Text, Image, Stack } from '@chakra-ui/react';
+import {
+  Box,
+  Text,
+  Image,
+  Stack,
+  HStack,
+  Icon,
+  Divider,
+  Button,
+} from '@chakra-ui/react';
 import { Navbar } from '../components/Homepage/Navbar';
 import { Footer } from '../components/Homepage/Footer';
 import { Card } from '../components/Homepage/Card';
 import React from 'react';
+import { BiTimeFive } from 'react-icons/bi';
 
 const Homepage = () => {
   return (
@@ -37,33 +47,32 @@ const Homepage = () => {
             >
               Gaia
             </Text>
-            <Text fontSize="3xl" color="brand.primary">
+            <Text fontSize="3xl" color="brand.primary" mb="4">
               Mother Earth’s Olympus Fork
             </Text>
+            <HStack fontSize="2xl" mb="4">
+              <BiTimeFive />
+              <Text>Bond your assets to earn $GAIA</Text>
+            </HStack>
+            <HStack fontSize="2xl" mb="4">
+              <BiTimeFive />
+              <Text>Stake your $GAIA for rewards</Text>
+            </HStack>
+            <HStack fontSize="2xl" mb="4">
+              <BiTimeFive />
+              <Text>Direct treasury funds to save the planetA</Text>
+            </HStack>
+            <HStack>
+              <Button>Enter the App</Button>
+              <Button>Join the Discord</Button>
+            </HStack>
           </Box>
-          <Box display={['none', 'none', 'none', 'block', 'block', 'block']}>
-            <Image
-              position="absolute"
-              right="100"
-              top="220"
-              width="500px"
-              src="./images/homepage-1.png"
-              alt="Wooded Streets"
-            />
-            <Image
-              position="absolute"
-              right="320"
-              width="400px"
-              src="./images/homepage-2.png"
-              alt="Overgrown Town"
-            />
-            <Image
-              position="absolute"
-              right="-50"
-              width="500px"
-              src="./images/homepage-3.png"
-              alt="Huge Tree"
-            />
+          <Box>
+            <Text>Current APY</Text>
+            <Text>54,343%</Text>
+            <Divider mb="4" />
+            <Text>Reclamed Land</Text>
+            <Text>15,000 acres</Text>
           </Box>
         </Box>
         <Stack
@@ -80,12 +89,7 @@ const Homepage = () => {
             { heading: '$534,343,322.44', subheading: 'Treasury Balance' },
             { heading: '$4,353,322.22', subheading: 'Total Value Locked' },
           ].map((item, idx) => (
-            <Box
-              key={idx}
-              width={['100%', null, '250px']}
-              px={['10px']}
-              height="150px"
-            >
+            <Box key={idx} width={'100%'} px={['10px']} height="150px">
               <Card heading={item.heading} subheading={item.subheading} />
             </Box>
           ))}

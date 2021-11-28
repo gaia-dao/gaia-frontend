@@ -125,9 +125,11 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       {...rest}
     >
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
-        <Text fontSize="2xl" fontWeight="black">
-          GAIA DAO
-        </Text>
+        <Link href="/">
+          <Text fontSize="2xl" fontWeight="black">
+            GAIA DAO
+          </Text>
+        </Link>
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (
