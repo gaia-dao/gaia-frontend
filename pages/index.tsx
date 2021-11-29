@@ -8,6 +8,7 @@ import {
   HStack,
   Link,
   Stack,
+  keyframes,
 } from '@chakra-ui/react';
 import { Navbar } from '../components/Homepage/Navbar';
 import { Footer } from '../components/Homepage/Footer';
@@ -15,8 +16,9 @@ import { Card } from '../components/Homepage/Card';
 import React from 'react';
 import router from 'next/router';
 import { ImageCard } from '../components/Homepage/ImageCard';
-
+import { GiPlainCircle } from 'react-icons/gi';
 const Homepage = () => {
+  const blinkAnimation = keyframes`from { opacity: 1; } to { opacity: 0; }`;
   return (
     <Box display="flex" flexDir="column">
       <Head>
@@ -135,7 +137,7 @@ const Homepage = () => {
           >
             <Box>
               <Box maxW="432px" my="36px">
-                <Text
+                <Box
                   mt={['10px', null, '20px']}
                   ml={['10px', null, '20px']}
                   backgroundColor="#E43535"
@@ -144,10 +146,20 @@ const Homepage = () => {
                   fontWeight="bold"
                   fontSize="xs"
                   borderRadius="8px"
-                  p="10px 12px 6px 12px"
+                  p="9px 12px 6px 12px"
+                  display="flex"
+                  justifyItems="center"
+                  alignItems="center"
                 >
-                  LIVE NOW
-                </Text>
+                  <Box
+                    mr="3px"
+                    pb=".5px"
+                    animation={`${blinkAnimation} 1s cubic-bezier(.5, 0, 1, 1) infinite alternate`}
+                  >
+                    <GiPlainCircle />
+                  </Box>
+                  <Text>LIVE NOW</Text>
+                </Box>
                 <ImageCard
                   src="./images/winter.png"
                   heading="OCTOBER - FEBURARY"
