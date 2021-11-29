@@ -93,7 +93,7 @@ const initializeWalletStore = (): IWallet => {
   // Auto connect to the cached provider
   useEffect(() => {
     if (web3Modal.cachedProvider) {
-      connect();
+      web3Modal.connect();
     }
   }, [connect]);
 

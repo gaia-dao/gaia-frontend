@@ -76,6 +76,9 @@ const theme = extendTheme({
       // tertiary: '#93855B',
       // lightBrown: '#BBAD88',
       // accentBrown: '#E4E3D8',
+      black: '#222222',
+      green: '#3DCE15',
+      white: '#FFFFFF',
     },
   },
   config: {

@@ -5,36 +5,23 @@ import React, { FC } from 'react';
 interface ICard {
   heading: string;
   subheading: string;
-  style?: CSSObject;
+  sx?: CSSObject;
 }
 
-export const Card: FC<ICard> = ({ heading, subheading, style }) => {
+export const Card: FC<ICard> = ({ heading, subheading, sx }) => {
   return (
     <Box
-      bgImage="url('./images/noise.png')"
-      bgPosition="center"
-      bgRepeat="repeat"
-      sx={{
-        boxShadow: '2xl',
-        backgroundColor: 'brand.accentBrown',
-        width: '100%',
-        height: '100%',
-        px: '12',
-        borderRadius: '20px',
-        py: '8',
-        wordWrap: 'break-word',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        flexDirection: 'column',
-        textAlign: 'center',
-        ...style,
-      }}
+      borderRadius="20px"
+      borderColor="brand.white"
+      border="2px solid"
+      textAlign="start"
+      padding="22px 20px 20px 20px"
+      width={['100%', null, '295px']}
+      mb="10px"
+      sx={{ ...sx }}
     >
-      <Text fontSize="l">{subheading}</Text>
-      <Text fontSize="4xl" fontWeight={900}>
-        {heading}
-      </Text>
+      <Text fontSize="xs">{heading}</Text>
+      <Text fontSize="2xl"> {subheading}</Text>
     </Box>
   );
 };
