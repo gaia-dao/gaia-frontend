@@ -41,6 +41,7 @@ import {
 import { useWalletProvider, WalletProvider } from '../hooks/WalletProvider';
 import { connected } from 'process';
 import { truncateAddress } from '../utils';
+import Logo from './Logo';
 
 interface LinkItemProps {
   name: string;
@@ -62,7 +63,7 @@ const Inner = ({ children }: { children: ReactNode }) => {
       minH="100vh"
       direction="column"
       height="full"
-      bg={useColorModeValue('gray.100', 'gray.900')}
+      bg={useColorModeValue('white', 'gray.900')}
     >
       <SidebarContent
         onClose={() => onClose}
@@ -131,7 +132,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
     >
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
         <Link href="/">
-          <Image src="./gaia-logo-white.svg" boxSize="100px" alt="GAIA Logo" />
+          <Logo color={useColorModeValue('black', 'white')} width={120} />
         </Link>
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
@@ -221,7 +222,9 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
       />
 
       <Link href="/" display={{ base: 'flex', md: 'none' }}>
-        <Image src="./gaia-logo-white.svg" boxSize="100px" alt="GAIA Logo" />
+        <Logo color={useColorModeValue('black', 'white')} width={120} />
+
+        {/* <Image src="./gaia-logo-white.svg" boxSize="100px" alt="GAIA Logo" /> */}
       </Link>
 
       <HStack spacing={{ base: '0', md: '6' }}>
