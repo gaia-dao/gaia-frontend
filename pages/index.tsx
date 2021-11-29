@@ -65,7 +65,6 @@ const Homepage = () => {
             onClick={() => router.push('/dashboard')}
           >
             <Text fontSize="24px" fontWeight="medium">
-              {' '}
               ENTER THE APP
             </Text>
           </Button>
