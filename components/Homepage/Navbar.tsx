@@ -42,13 +42,16 @@ export const Navbar = () => {
         <Text>Learn more</Text>
         <Button
           display={['none', null, 'block']}
-          p="14px 18px 10px 18px"
           borderRadius="100px"
           backgroundColor="brand.white"
           color="brand.black"
+          pt="2px"
+          _hover={{ opacity: '70%' }}
           onClick={() => router.push('/dashboard')}
         >
-          <Text fontSize="16px"> ENTER APP</Text>
+          <Text fontSize="16px" fontWeight="medium">
+            ENTER APP
+          </Text>
         </Button>
       </HStack>
     </Box>

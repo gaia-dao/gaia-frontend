@@ -7,6 +7,7 @@ import {
   Container,
   HStack,
   Link,
+  Stack,
 } from '@chakra-ui/react';
 import { Navbar } from '../components/Homepage/Navbar';
 import { Footer } from '../components/Homepage/Footer';
@@ -16,12 +17,6 @@ import router from 'next/router';
 import { ImageCard } from '../components/Homepage/ImageCard';
 
 const Homepage = () => {
-  const subheaderCopy = [
-    'Bond your assets to $GAIA',
-    'Stake your $GAIA to rewards',
-    'Direct treasury funds to save the planet',
-  ];
-
   return (
     <Box display="flex" flexDir="column">
       <Head>
@@ -36,6 +31,7 @@ const Homepage = () => {
         maxW="100%"
         backgroundSize="cover"
         filter="drop-shadow(0px 0px 4px black)"
+        minHeight="100vh"
       >
         <Container
           maxW="container.lg"
@@ -43,7 +39,7 @@ const Homepage = () => {
           flexDirection="column"
           alignItems="center"
           textAlign="center"
-          mt={['150px', null, '202px']}
+          pt={['217px', null, '269px']}
         >
           <Image src="./gaia-logo-white.svg" width="236px" alt="logo" />
           <Text
@@ -59,22 +55,23 @@ const Homepage = () => {
             mt="50px"
             px="24px"
             py="24px"
+            pt="30px"
             borderRadius="100px"
             backgroundColor="brand.white"
+            _hover={{ opacity: '70%' }}
             color="brand.black"
             onClick={() => router.push('/dashboard')}
           >
-            <Text fontSize="24px"> ENTER THE APP</Text>
+            <Text fontSize="24px" fontWeight="medium">
+              {' '}
+              ENTER THE APP
+            </Text>
           </Button>
-          <Box mt="63px">
-            {subheaderCopy.map((item, index) => (
-              <Text key={index}>{item}</Text>
-            ))}
-          </Box>
+
           <Box
             mt="64px"
             display="flex"
-            style={{ gap: '10px' }}
+            sx={{ gap: [null, null, '10px'] }}
             width="100%"
             justifyContent="center"
             flexWrap="wrap"
@@ -98,9 +95,9 @@ const Homepage = () => {
             </Box>
             <Box height="inherit" width={['100%', null, 'max-content']}>
               <Card
-                heading="CURRENT APY"
-                subheading="54,453%"
-                sx={{ height: ['100%', null, null, '210px'] }}
+                heading="RECLAIMED LAND"
+                subheading="15,000 acres"
+                sx={{ height: [null, null, '210px'] }}
               />
             </Box>
           </Box>
@@ -129,7 +126,13 @@ const Homepage = () => {
             Each season, GAIA holders vote on the treasury backing asset to
             accumulate for the upcoming season.
           </Text>
-          <Box textAlign="start" display="flex" sx={{ gap: '20px' }}>
+          <Box
+            textAlign="start"
+            display="flex"
+            sx={{ gap: '20px' }}
+            flexWrap="wrap"
+            justifyContent="center"
+          >
             <Box>
               <Box maxW="432px" my="36px">
                 <Text
@@ -213,7 +216,7 @@ const Homepage = () => {
             fees increase the underlying assets in our treasury, which back
             outstanding GAIA tokens with intrinsic value.
           </Text>
-          <HStack spacing="14px" mt="50px">
+          <Stack direction={['column', 'row']} spacing="14px" mt="50px">
             <Button
               backgroundColor="brand.black"
               color="brand.white"
@@ -231,7 +234,7 @@ const Homepage = () => {
             >
               JOIN THE DISCORD
             </Button>
-          </HStack>
+          </Stack>
         </Container>
       </Box>
       <Footer />
