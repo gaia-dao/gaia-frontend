@@ -28,6 +28,8 @@ import {
 } from '@chakra-ui/react';
 import { IconType } from 'react-icons';
 import { BiWalletAlt, BiMoon } from 'react-icons/bi';
+import { VscTwitter, VscGithubInverted } from 'react-icons/vsc';
+import { SiDiscord } from 'react-icons/si';
 import {
   FiHome,
   FiTrendingUp,
@@ -67,7 +69,7 @@ const Inner = ({ children }: { children: ReactNode }) => {
     >
       <SidebarContent
         onClose={() => onClose}
-        display={{ base: 'none', md: 'block' }}
+        display={{ base: 'none', md: 'flex' }}
       />
       <Drawer
         autoFocus={false}
@@ -131,7 +133,23 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
         </NavItem>
       ))}
       <Spacer />
-      <Text>asdf</Text>
+      <HStack alignItems="center" justifyContent="space-between" p="4">
+        <Link href="https://twitter.com/Gaia_DAO" isExternal>
+          <Button size="lg" variant="ghost">
+            <VscTwitter />
+          </Button>
+        </Link>
+        <Link href="/" isExternal>
+          <Button size="lg" variant="ghost">
+            <VscGithubInverted />
+          </Button>
+        </Link>
+        <Link href="/" isExternal>
+          <Button size="lg" variant="ghost">
+            <SiDiscord />
+          </Button>
+        </Link>
+      </HStack>
     </Flex>
   );
 };
@@ -212,8 +230,6 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 
       <Link href="/" display={{ base: 'flex', md: 'none' }}>
         <Logo color={useColorModeValue('black', 'white')} width={120} />
-
-        {/* <Image src="./gaia-logo-white.svg" boxSize="100px" alt="GAIA Logo" /> */}
       </Link>
 
       <HStack spacing={{ base: '0', md: '6' }}>
