@@ -68,8 +68,8 @@ export const columns = [
     accessor: 'link',
     Cell: function StatusCell(data: any) {
       return (
-        <Link href={data} passhref={true} isExternal>
-          <Button rightIcon={<BiExit />}>Buy on Uniswap</Button>
+        <Link href={data} passhref="true" isExternal>
+          <Button>Buy on Uniswap</Button>
         </Link>
       );
     },

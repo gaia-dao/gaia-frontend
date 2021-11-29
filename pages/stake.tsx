@@ -31,13 +31,7 @@ const Stake = () => {
       </Head>
 
       <Layout>
-        <Box
-          p={10}
-          style={{ backdropFilter: 'blur(5px)' }}
-          border="2px solid black"
-          borderRadius="lg"
-          mb={20}
-        >
+        <Box mb="10vw">
           <Heading>Single Stake</Heading>
           <Text mb="8">
             <b>7 hrs, 10 min</b> until next rebase
@@ -139,12 +133,7 @@ const Stake = () => {
             </Tabs>
           </Flex>
         </Box>
-        <Box
-          p={10}
-          style={{ backdropFilter: 'blur(5px)' }}
-          border="2px solid black"
-          borderRadius="lg"
-        >
+        <Box>
           <Heading>Farm Pool</Heading>
           <Text mb="8">Farm your Gaia</Text>
           <TableContent />

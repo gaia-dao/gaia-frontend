@@ -24,6 +24,7 @@ import {
   MenuList,
   Button,
   Image,
+  Spacer,
 } from '@chakra-ui/react';
 import { IconType } from 'react-icons';
 import { BiWalletAlt, BiMoon } from 'react-icons/bi';
@@ -84,14 +85,14 @@ const Inner = ({ children }: { children: ReactNode }) => {
       <Flex
         as="main"
         ml={{ base: 0, md: 60 }}
-        p="20"
+        p="4vw"
         // bgImage="url('./images/solarpunk.png')"
-        bgPosition="cover+"
-        bgRepeat="no-repeat"
+        // bgPosition="cover+"
+        // bgRepeat="no-repeat"
         flexDirection="column"
-        style={{
-          background: `linear-gradient(108.46deg, #000000 6.95%, rgba(0, 0, 0, 0) 100%), url('./images/solarpunk.png') left top / cover`,
-        }}
+        // style={{
+        //   background: `linear-gradient(108.46deg, #000000 6.95%, rgba(0, 0, 0, 0) 100%), url('./images/solarpunk.png') left top / cover`,
+        // }}
       >
         {children}
       </Flex>
@@ -115,7 +116,10 @@ interface SidebarProps extends BoxProps {
 
 const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
   return (
-    <Box
+    <Flex
+      display="flex"
+      as="nav"
+      flexDirection="column"
       transition="0.3s ease"
       bg={useColorModeValue('white', 'gray.900')}
       borderRight="1px"
@@ -127,7 +131,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
     >
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
         <Link href="/">
-          <Image src="./gaia-logo.svg" boxSize="100px" alt="GAIA Logo" />
+          <Image src="./gaia-logo-white.svg" boxSize="100px" alt="GAIA Logo" />
         </Link>
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
@@ -136,7 +140,9 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
           {link.name}
         </NavItem>
       ))}
-    </Box>
+      <Spacer />
+      <Text>asdf</Text>
+    </Flex>
   );
 };
 
@@ -150,14 +156,18 @@ const NavItem = ({ icon, link, children, ...rest }: NavItemProps) => {
     <Link href={`/${link}`} style={{ textDecoration: 'none' }}>
       <Flex
         align="center"
-        p="4"
+        py="2"
+        px="4"
+        mb="4"
         mx="4"
-        borderRadius="lg"
+        borderRadius="full"
         role="group"
         cursor="pointer"
+        textTransform="uppercase"
+        fontWeight="bold"
         _hover={{
-          bg: 'cyan.400',
-          color: 'white',
+          bg: 'brand.secondary',
+          color: 'brand.primary',
         }}
         {...rest}
       >
@@ -166,7 +176,7 @@ const NavItem = ({ icon, link, children, ...rest }: NavItemProps) => {
             mr="4"
             fontSize="16"
             _groupHover={{
-              color: 'white',
+              color: 'brand.primary',
             }}
             as={icon}
           />
@@ -210,22 +220,11 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
         icon={<FiMenu />}
       />
 
-      <Text
-        display={{ base: 'flex', md: 'none' }}
-        fontSize="2xl"
-        fontFamily="monospace"
-        fontWeight="bold"
-      >
-        Logo
-      </Text>
+      <Link href="/" display={{ base: 'flex', md: 'none' }}>
+        <Image src="./gaia-logo-white.svg" boxSize="100px" alt="GAIA Logo" />
+      </Link>
 
       <HStack spacing={{ base: '0', md: '6' }}>
-        <IconButton
-          size="lg"
-          variant="ghost"
-          aria-label="open menu"
-          icon={<FiBell />}
-        />
         <IconButton
           size="lg"
           variant="ghost"
@@ -247,7 +246,9 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
                   spacing="1px"
                   ml="2"
                 >
-                  <Text fontSize="sm">$GAIA</Text>
+                  <Text fontSize="md" fontWeight="bold">
+                    $GAIA
+                  </Text>
                 </VStack>
                 <Box display={{ base: 'none', md: 'flex' }}>
                   <FiChevronDown />
@@ -260,6 +261,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
             >
               <MenuItem>Buy on Sushi Swap</MenuItem>
               <MenuItem>Buy on Uniswap</MenuItem>
+              <MenuItem>Buy on 1inch</MenuItem>
               <MenuItem>Wrap $GAIA</MenuItem>
               <MenuDivider />
               <MenuItem>Add Token to Wallet</MenuItem>
