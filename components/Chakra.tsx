@@ -4,7 +4,9 @@ import {
   localStorageManager,
   extendTheme,
 } from '@chakra-ui/react';
-import Fonts from './fonts';
+
+import '@fontsource/inter/variable-full.css'; // This contains ALL variable axes. Font files are larger.
+// import '@fontsource/inter/variable-full-italic.css'; // Italic variant.
 
 const Button = {
   // The styles all button have in common
@@ -37,8 +39,8 @@ const theme = extendTheme({
     Button,
   },
   fonts: {
-    heading: 'TT Commons',
-    body: 'TT Commons',
+    heading: 'InterVariable',
+    body: 'InterVariable',
   },
   colors: {
     transparent: 'transparent',
@@ -91,7 +93,6 @@ export function Chakra({ cookies, children }) {
 
   return (
     <ChakraProvider theme={theme} colorModeManager={colorModeManager}>
-      <Fonts />
       {children}
     </ChakraProvider>
   );
