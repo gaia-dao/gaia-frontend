@@ -83,18 +83,7 @@ const Inner = ({ children }: { children: ReactNode }) => {
         </DrawerContent>
       </Drawer>
       <MobileNav onOpen={onOpen} />
-      <Flex
-        as="main"
-        ml={{ base: 0, md: 60 }}
-        p="4vw"
-        // bgImage="url('./images/solarpunk.png')"
-        // bgPosition="cover+"
-        // bgRepeat="no-repeat"
-        flexDirection="column"
-        // style={{
-        //   background: `linear-gradient(108.46deg, #000000 6.95%, rgba(0, 0, 0, 0) 100%), url('./images/solarpunk.png') left top / cover`,
-        // }}
-      >
+      <Flex as="main" ml={{ base: 0, md: 60 }} p="4vw" flexDirection="column">
         {children}
       </Flex>
     </Flex>

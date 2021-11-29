@@ -17,6 +17,7 @@ import {
   VStack,
   Container,
   Divider,
+  useColorModeValue,
 } from '@chakra-ui/react';
 import { BiWalletAlt } from 'react-icons/bi';
 import Layout from '../components/Layout';
@@ -31,7 +32,13 @@ const Stake = () => {
       </Head>
 
       <Layout>
-        <Box mb="10vw">
+        <Box
+          mb="4vw"
+          border="1px"
+          borderColor={useColorModeValue('gray.200', 'gray.700')}
+          borderRadius={4}
+          p="4vw"
+        >
           <Heading>Single Stake</Heading>
           <Text mb="8">
             <b>7 hrs, 10 min</b> until next rebase
@@ -58,14 +65,26 @@ const Stake = () => {
           </SimpleGrid>
           <Flex justify="center" mt="10">
             <Tabs w="100%">
-              <TabList>
-                <Tab>Stake</Tab>
-                <Tab>Unstake</Tab>
+              <TabList justifyContent="center">
+                <Tab
+                  fontWeight="bold"
+                  textTransform="uppercase"
+                  _selected={{ color: 'brand.primary' }}
+                >
+                  Stake
+                </Tab>
+                <Tab
+                  fontWeight="bold"
+                  textTransform="uppercase"
+                  _selected={{ color: 'brand.primary' }}
+                >
+                  Unstake
+                </Tab>
               </TabList>
 
               <TabPanels w="100%">
                 <TabPanel>
-                  <HStack spacing={10} mb="8">
+                  <HStack spacing={10} justifyContent="center" my="12">
                     <VStack>
                       <Text>
                         First time staking <b>GAIA</b>?
@@ -133,7 +152,12 @@ const Stake = () => {
             </Tabs>
           </Flex>
         </Box>
-        <Box>
+        <Box
+          border="1px"
+          borderColor={useColorModeValue('gray.200', 'gray.700')}
+          borderRadius={4}
+          p="4vw"
+        >
           <Heading>Farm Pool</Heading>
           <Text mb="8">Farm your Gaia</Text>
           <TableContent />
