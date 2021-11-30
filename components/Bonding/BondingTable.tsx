@@ -27,10 +27,10 @@ const data = [
         name: 'Gaia',
       },
     ],
-    asset: 'GAIA-USDC',
-    apy: '43.34%',
-    tvd: '543,434',
-    balance: '0 gaia',
+    bond: 'GAIA-USDC LP',
+    price: '43.34%',
+    roi: '543,434',
+    purchased: '0 gaia',
     link: 'https://example.com/',
   },
   {
@@ -44,10 +44,10 @@ const data = [
         name: 'Gaia',
       },
     ],
-    asset: 'GAIA-DAI',
-    apy: '43.34%',
-    tvd: '543,434',
-    balance: '0 gaia',
+    bond: 'GAIA-DAI',
+    price: '43.34%',
+    roi: '543,434',
+    purchased: '0 gaia',
     link: 'https://example.com/',
   },
   {
@@ -61,10 +61,10 @@ const data = [
         name: 'Gaia',
       },
     ],
-    asset: 'GAIA-USDC',
-    apy: '43.34%',
-    tvd: '543,434',
-    balance: '0 gaia',
+    bond: 'GAIA-USDC',
+    price: '43.34%',
+    roi: '543,434',
+    purchased: '0 gaia',
     link: 'https://example.com/',
   },
 ];
@@ -87,20 +87,20 @@ export const columns = [
     },
   },
   {
-    Header: 'Asset',
-    accessor: 'asset',
+    Header: 'Bond',
+    accessor: 'bond',
   },
   {
-    Header: 'APY',
-    accessor: 'apy',
+    Header: 'Price',
+    accessor: 'price',
   },
   {
-    Header: 'TVD',
-    accessor: 'tvd',
+    Header: 'ROI',
+    accessor: 'roi',
   },
   {
-    Header: 'Balance',
-    accessor: 'balance',
+    Header: 'Purchased',
+    accessor: 'purchased',
   },
   {
     Header: '',
@@ -108,14 +108,14 @@ export const columns = [
     Cell: function LinkCell(data: any) {
       return (
         <Link href={data} passhref="true" isExternal>
-          <Button>Buy</Button>
+          <Button>Bond</Button>
         </Link>
       );
     },
   },
 ];
 
-const PoolTable = () => {
+const BondingTable = () => {
   return (
     <Box overflowX="scroll">
       <Table my="8" fontSize="sm">
@@ -148,4 +148,4 @@ const PoolTable = () => {
   );
 };
 
-export default PoolTable;
+export default BondingTable;
