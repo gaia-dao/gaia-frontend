@@ -21,7 +21,7 @@ import {
 } from '@chakra-ui/react';
 import { BiWalletAlt } from 'react-icons/bi';
 import Layout from '../components/Layout';
-import { TableContent } from '../components/Staking/TableContent';
+import PoolTable from '../components/Staking/PoolTable';
 
 const Stake = () => {
   return (
@@ -160,7 +160,7 @@ const Stake = () => {
         >
           <Heading>Farm Pool</Heading>
           <Text mb="8">Farm your Gaia</Text>
-          <TableContent />
+          <PoolTable />
         </Box>
       </Layout>
     </>

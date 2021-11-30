@@ -139,12 +139,12 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
             <VscTwitter />
           </Button>
         </Link>
-        <Link href="/" isExternal>
+        <Link href="https://github.com/gaia-dao" isExternal>
           <Button size="lg" variant="ghost">
             <VscGithubInverted />
           </Button>
         </Link>
-        <Link href="/" isExternal>
+        <Link href="https://discord.gg/6VCud8steM" isExternal>
           <Button size="lg" variant="ghost">
             <SiDiscord />
           </Button>
