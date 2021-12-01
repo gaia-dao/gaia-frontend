@@ -25,6 +25,7 @@ import {
   Button,
   Image,
   Spacer,
+  Divider,
 } from '@chakra-ui/react';
 import { IconType } from 'react-icons';
 import { BiWalletAlt, BiMoon } from 'react-icons/bi';
@@ -50,10 +51,27 @@ interface LinkItemProps {
   link: string;
   icon: IconType;
 }
+
 const LinkItems: Array<LinkItemProps> = [
   { name: 'Dashboard', link: 'dashboard', icon: FiHome },
   { name: 'Stake', link: 'stake', icon: FiTrendingUp },
   { name: 'Bond', link: 'bond', icon: FiCompass },
+];
+
+interface BondLinkItemProps {
+  name: string;
+  discount: string;
+  link: string;
+}
+
+const BondLink: Array<BondLinkItemProps> = [
+  { name: 'wETH', discount: '10.54', link: '' },
+  { name: 'OHM', discount: '2.32%', link: '' },
+  { name: 'GAIA-DAI LP', discount: '23.23', link: '' },
+  { name: 'GAIA-AVX LP', discount: '11.32', link: '' },
+];
+
+const ExternalLinks: Array<LinkItemProps> = [
   { name: 'Calculator', link: 'calculator', icon: FiStar },
   { name: 'Documentation', link: 'documentation', icon: FiSettings },
 ];
@@ -132,6 +150,36 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
           {link.name}
         </NavItem>
       ))}
+      <VStack justifyContent="start" alignItems="start" pl="8" pr="2" mb="4">
+        <Text fontSize="sm" color="gray.500">
+          Bonding Discounts
+        </Text>
+        {BondLink.map((bond, key) => {
+          console.log(bond);
+          return (
+            <Link
+              key={key}
+              href={bond.link}
+              fontSize="sm"
+              py="1"
+              mx="2"
+              display="flex"
+              justifyContent="space-between"
+              w="100%"
+            >
+              <Text>{bond.name}</Text>
+              <Text>{bond.discount}%</Text>
+            </Link>
+          );
+        })}
+      </VStack>
+      <Divider mb="4" />
+      {ExternalLinks.map((link) => (
+        <NavItem key={link.name} link={link.link} icon={link.icon}>
+          {link.name}
+        </NavItem>
+      ))}
+
       <Spacer />
       <HStack alignItems="center" justifyContent="space-between" p="4">
         <Link href="https://twitter.com/Gaia_DAO" isExternal>
