@@ -49,12 +49,11 @@ const Homepage = () => {
             fontSize="6xl"
             lineHeight="60px"
             fontWeight="light"
-            mt="100px"
+            my="10"
           >
             The Olympus Fork for Mother Earth
           </Text>
           <Button
-            mt="50px"
             px="24px"
             py="24px"
             pt="30px"
@@ -161,15 +160,15 @@ const Homepage = () => {
                 </Box>
                 <ImageCard
                   src="./images/winter.png"
-                  heading="OCTOBER - FEBURARY"
-                  subheading="WINTER"
+                  heading="Winter Season"
+                  subheading="OCTOBER - FEBURARY"
                 />
               </Box>
               <Box maxW="432px">
                 <ImageCard
                   src="./images/summer.png"
-                  heading="JUNE - AUGUST"
-                  subheading="SUMMER"
+                  heading="Summer Season"
+                  subheading="JUNE - AUGUST"
                 />
               </Box>
             </Box>
@@ -177,15 +176,15 @@ const Homepage = () => {
               <Box maxW="432px" my="36px">
                 <ImageCard
                   src="./images/spring.png"
-                  heading="MARCH - MAY"
-                  subheading="SPRING"
+                  heading="Spring Season"
+                  subheading="MARCH - MAY"
                 />
               </Box>
               <Box maxW="432px">
                 <ImageCard
                   src="./images/fall.png"
-                  heading="SEPTEMBER - NOVEMBER"
-                  subheading="FALL"
+                  heading="Fall Season"
+                  subheading="SEPTEMBER - NOVEMBER"
                 />
               </Box>
             </Box>

@@ -19,9 +19,9 @@ export const ImageCard: FC<ICard> = ({ src, heading, subheading, sx }) => {
         src={src}
         alt={subheading}
       />
-      <Box fontWeight="medium" ml="20px" mt="20px">
-        <Text>{heading}</Text>
-        <Text>{subheading}</Text>
+      <Box fontWeight="medium" mt="20px">
+        <Text fontSize="small">{subheading}</Text>
+        <Text fontSize="2xl">{heading}</Text>
       </Box>
     </>
   );

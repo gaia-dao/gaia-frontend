@@ -21,7 +21,9 @@ export const Card: FC<ICard> = ({ heading, subheading, sx }) => {
       sx={{ ...sx }}
     >
       <Text fontSize="xs">{heading}</Text>
-      <Text fontSize="2xl"> {subheading}</Text>
+      <Text fontSize="2xl" fontWeight="black">
+        {subheading}
+      </Text>
     </Box>
   );
 };

@@ -73,7 +73,11 @@ const BondLink: Array<BondLinkItemProps> = [
 
 const ExternalLinks: Array<LinkItemProps> = [
   { name: 'Calculator', link: 'calculator', icon: FiStar },
-  { name: 'Documentation', link: 'documentation', icon: FiSettings },
+  {
+    name: 'Documentation',
+    link: 'https://gaia-dao.gitbook.io/gaia-dao/',
+    icon: FiSettings,
+  },
 ];
 
 const Inner = ({ children }: { children: ReactNode }) => {
