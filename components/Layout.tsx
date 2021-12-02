@@ -1,4 +1,4 @@
-import React, { ReactNode, ReactText } from 'react';
+import React, { ReactNode, ReactText, useEffect } from 'react';
 import {
   IconButton,
   Avatar,
@@ -26,11 +26,14 @@ import {
   Image,
   Spacer,
   Divider,
+  useToast,
 } from '@chakra-ui/react';
 import { IconType } from 'react-icons';
 import { BiWalletAlt, BiMoon } from 'react-icons/bi';
 import { VscTwitter, VscGithubInverted } from 'react-icons/vsc';
 import { SiDiscord } from 'react-icons/si';
+import { VscBook } from 'react-icons/vsc';
+import { AiOutlineCalculator } from 'react-icons/ai';
 import {
   FiHome,
   FiTrendingUp,
@@ -42,7 +45,6 @@ import {
   FiChevronDown,
 } from 'react-icons/fi';
 import { useWalletProvider, WalletProvider } from '../hooks/WalletProvider';
-import { connected } from 'process';
 import { truncateAddress } from '../utils';
 import Logo from './Logo';
 
@@ -50,67 +52,185 @@ interface LinkItemProps {
   name: string;
   link: string;
   icon: IconType;
+  isExternal: boolean;
 }
 
 const LinkItems: Array<LinkItemProps> = [
-  { name: 'Dashboard', link: 'dashboard', icon: FiHome },
-  { name: 'Stake', link: 'stake', icon: FiTrendingUp },
-  { name: 'Bond', link: 'bond', icon: FiCompass },
+  { name: 'Dashboard', link: '/dashboard', icon: FiHome, isExternal: false },
+  { name: 'Stake', link: '/stake', icon: FiTrendingUp, isExternal: false },
+  { name: 'Bond', link: '/bond', icon: FiCompass, isExternal: false },
 ];
 
 interface BondLinkItemProps {
   name: string;
   discount: string;
   link: string;
+  bondPrice: number;
+  marketPrice: number;
+  yourBalance: number;
+  youGet: number;
+  maxYouCanBuy: number;
+  roi: number;
+  debtRatio: number;
+  vestingTerm: number;
+  logos: Array<object>;
 }
 
 const BondLink: Array<BondLinkItemProps> = [
-  { name: 'wETH', discount: '10.54', link: '' },
-  { name: 'OHM', discount: '2.32%', link: '' },
-  { name: 'GAIA-DAI LP', discount: '23.23', link: '' },
-  { name: 'GAIA-AVX LP', discount: '11.32', link: '' },
+  {
+    name: 'wETH',
+    discount: '10.54',
+    link: '/bond/weth',
+    bondPrice: 0.1,
+    marketPrice: 0.1,
+    yourBalance: 0.1,
+    youGet: 0.1,
+    maxYouCanBuy: 0.1,
+    roi: 0.1,
+    debtRatio: 0.1,
+    vestingTerm: 0.1,
+    logos: [
+      {
+        src: '/images/tokens/weth.png',
+        name: 'wETH',
+      },
+      {
+        src: '/images/tokens/gaia.png',
+        name: 'Gaia',
+      },
+    ],
+  },
+  {
+    name: 'OHM',
+    discount: '2.32%',
+    link: '/bond/ohm',
+    bondPrice: 0.1,
+    marketPrice: 0.1,
+    yourBalance: 0.1,
+    youGet: 0.1,
+    maxYouCanBuy: 0.1,
+    roi: 0.1,
+    debtRatio: 0.1,
+    vestingTerm: 0.1,
+    logos: [
+      {
+        src: '/images/tokens/weth.png',
+        name: 'wETH',
+      },
+      {
+        src: '/images/tokens/gaia.png',
+        name: 'Gaia',
+      },
+    ],
+  },
+  {
+    name: 'GAIA-DAI LP',
+    discount: '23.23',
+    link: '/gaia-dai-lp',
+    bondPrice: 0.1,
+    marketPrice: 0.1,
+    yourBalance: 0.1,
+    youGet: 0.1,
+    maxYouCanBuy: 0.1,
+    roi: 0.1,
+    debtRatio: 0.1,
+    vestingTerm: 0.1,
+    logos: [
+      {
+        src: '/images/tokens/weth.png',
+        name: 'wETH',
+      },
+      {
+        src: '/images/tokens/gaia.png',
+        name: 'Gaia',
+      },
+    ],
+  },
+  {
+    name: 'GAIA-AVX LP',
+    discount: '11.32',
+    link: '/gaia-avx-lp',
+    bondPrice: 0.1,
+    marketPrice: 0.1,
+    yourBalance: 0.1,
+    youGet: 0.1,
+    maxYouCanBuy: 0.1,
+    roi: 0.1,
+    debtRatio: 0.1,
+    vestingTerm: 0.1,
+    logos: [
+      {
+        src: '/images/tokens/weth.png',
+        name: 'wETH',
+      },
+      {
+        src: '/images/tokens/gaia.png',
+        name: 'Gaia',
+      },
+    ],
+  },
 ];
 
 const ExternalLinks: Array<LinkItemProps> = [
-  { name: 'Calculator', link: 'calculator', icon: FiStar },
+  {
+    name: 'Calculator',
+    link: '/calculator',
+    icon: AiOutlineCalculator,
+    isExternal: false,
+  },
   {
     name: 'Documentation',
     link: 'https://gaia-dao.gitbook.io/gaia-dao/',
-    icon: FiSettings,
+    icon: VscBook,
+    isExternal: true,
   },
 ];
 
 const Inner = ({ children }: { children: ReactNode }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const toast = useToast();
+
+  useEffect(() => {
+    // toast({
+    //   title: 'M',
+    //   description: 'Please read the documentation before using the application',
+    //   status: 'success',
+    //   duration: 9000,
+    //   isClosable: true,
+    // });
+  }, [toast]);
+
   return (
-    <Flex
-      minH="100vh"
-      direction="column"
-      height="full"
-      bg={useColorModeValue('white', 'gray.900')}
-    >
-      <SidebarContent
-        onClose={() => onClose}
-        display={{ base: 'none', md: 'flex' }}
-      />
-      <Drawer
-        autoFocus={false}
-        isOpen={isOpen}
-        placement="left"
-        onClose={onClose}
-        returnFocusOnClose={false}
-        onOverlayClick={onClose}
-        size="full"
+    <>
+      <Flex
+        minH="100vh"
+        direction="column"
+        height="full"
+        bg={useColorModeValue('white', 'gray.900')}
       >
-        <DrawerContent>
-          <SidebarContent onClose={onClose} />
-        </DrawerContent>
-      </Drawer>
-      <MobileNav onOpen={onOpen} />
-      <Flex as="main" ml={{ base: 0, md: 60 }} p="4vw" flexDirection="column">
-        {children}
+        <SidebarContent
+          onClose={() => onClose}
+          display={{ base: 'none', md: 'flex' }}
+        />
+        <Drawer
+          autoFocus={false}
+          isOpen={isOpen}
+          placement="left"
+          onClose={onClose}
+          returnFocusOnClose={false}
+          onOverlayClick={onClose}
+          size="full"
+        >
+          <DrawerContent>
+            <SidebarContent onClose={onClose} />
+          </DrawerContent>
+        </Drawer>
+        <MobileNav onOpen={onOpen} />
+        <Flex as="main" ml={{ base: 0, md: 60 }} p="4vw" flexDirection="column">
+          {children}
+        </Flex>
       </Flex>
-    </Flex>
+    </>
   );
 };
 
@@ -143,7 +263,13 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
       h="full"
       {...rest}
     >
-      <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
+      <Flex
+        h="20"
+        alignItems="center"
+        mx="8"
+        mb="8"
+        justifyContent="space-between"
+      >
         <Link href="/">
           <Logo color={useColorModeValue('black', 'white')} width={120} />
         </Link>
@@ -154,7 +280,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
           {link.name}
         </NavItem>
       ))}
-      <VStack justifyContent="start" alignItems="start" pl="8" pr="2" mb="4">
+      <VStack justifyContent="start" alignItems="start" pl="10" pr="6" mb="4">
         <Text fontSize="sm" color="gray.500">
           Bonding Discounts
         </Text>
@@ -213,7 +339,7 @@ interface NavItemProps extends FlexProps {
 }
 const NavItem = ({ icon, link, children, ...rest }: NavItemProps) => {
   return (
-    <Link href={`/${link}`} style={{ textDecoration: 'none' }}>
+    <Link href={link} style={{ textDecoration: 'none' }}>
       <Flex
         align="center"
         py="2"

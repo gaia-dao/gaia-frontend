@@ -9,8 +9,8 @@ import {
   useColorModeValue,
   SimpleGrid,
 } from '@chakra-ui/react';
-import Layout from '../components/Layout';
-import BondingTable from '../components/Bonding/BondingTable';
+import Layout from '../../components/Layout';
+import BondingTable from '../../components/Bonding/BondingTable';
 
 const Bond = () => {
   return (
