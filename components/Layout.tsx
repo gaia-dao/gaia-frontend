@@ -1,4 +1,10 @@
-import React, { ReactNode, ReactText, useEffect } from 'react';
+import React, {
+  ReactNode,
+  ReactText,
+  useEffect,
+  createContext,
+  useContext,
+} from 'react';
 import {
   IconButton,
   Avatar,
@@ -76,7 +82,24 @@ interface BondLinkItemProps {
   logos: Array<object>;
 }
 
-const BondLink: Array<BondLinkItemProps> = [
+// const BondLink: Array<BondLinkItemProps> =
+
+const ExternalLinks: Array<LinkItemProps> = [
+  {
+    name: 'Calculator',
+    link: '/calculator',
+    icon: AiOutlineCalculator,
+    isExternal: false,
+  },
+  {
+    name: 'Documentation',
+    link: 'https://gaia-dao.gitbook.io/gaia-dao/',
+    icon: VscBook,
+    isExternal: true,
+  },
+];
+
+const bondingInitialState = [
   {
     name: 'wETH',
     discount: '10.54',
@@ -171,20 +194,7 @@ const BondLink: Array<BondLinkItemProps> = [
   },
 ];
 
-const ExternalLinks: Array<LinkItemProps> = [
-  {
-    name: 'Calculator',
-    link: '/calculator',
-    icon: AiOutlineCalculator,
-    isExternal: false,
-  },
-  {
-    name: 'Documentation',
-    link: 'https://gaia-dao.gitbook.io/gaia-dao/',
-    icon: VscBook,
-    isExternal: true,
-  },
-];
+export const BondingContext = createContext(bondingInitialState);
 
 const Inner = ({ children }: { children: ReactNode }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -202,34 +212,41 @@ const Inner = ({ children }: { children: ReactNode }) => {
 
   return (
     <>
-      <Flex
-        minH="100vh"
-        direction="column"
-        height="full"
-        bg={useColorModeValue('white', 'gray.900')}
-      >
-        <SidebarContent
-          onClose={() => onClose}
-          display={{ base: 'none', md: 'flex' }}
-        />
-        <Drawer
-          autoFocus={false}
-          isOpen={isOpen}
-          placement="left"
-          onClose={onClose}
-          returnFocusOnClose={false}
-          onOverlayClick={onClose}
-          size="full"
+      <BondingContext.Provider value={bondingInitialState}>
+        <Flex
+          minH="100vh"
+          direction="column"
+          height="full"
+          bg={useColorModeValue('white', 'gray.900')}
         >
-          <DrawerContent>
-            <SidebarContent onClose={onClose} />
-          </DrawerContent>
-        </Drawer>
-        <MobileNav onOpen={onOpen} />
-        <Flex as="main" ml={{ base: 0, md: 60 }} p="4vw" flexDirection="column">
-          {children}
+          <SidebarContent
+            onClose={() => onClose}
+            display={{ base: 'none', md: 'flex' }}
+          />
+          <Drawer
+            autoFocus={false}
+            isOpen={isOpen}
+            placement="left"
+            onClose={onClose}
+            returnFocusOnClose={false}
+            onOverlayClick={onClose}
+            size="full"
+          >
+            <DrawerContent>
+              <SidebarContent onClose={onClose} />
+            </DrawerContent>
+          </Drawer>
+          <MobileNav onOpen={onOpen} />
+          <Flex
+            as="main"
+            ml={{ base: 0, md: 60 }}
+            p="4vw"
+            flexDirection="column"
+          >
+            {children}
+          </Flex>
         </Flex>
-      </Flex>
+      </BondingContext.Provider>
     </>
   );
 };
@@ -249,6 +266,10 @@ interface SidebarProps extends BoxProps {
 }
 
 const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
+  const BondLink = useContext(BondingContext);
+
+  console.log(BondLink);
+
   return (
     <Flex
       display="flex"

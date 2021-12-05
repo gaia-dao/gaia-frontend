@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { useContext } from 'react';
 import {
   Box,
   Heading,
@@ -9,10 +10,14 @@ import {
   useColorModeValue,
   SimpleGrid,
 } from '@chakra-ui/react';
-import Layout from '../../components/Layout';
+import Layout, { BondingContext } from '../../components/Layout';
 import BondingTable from '../../components/Bonding/BondingTable';
 
 const Bond = () => {
+  const value = useContext(BondingContext);
+  console.log(value);
+  console.log(value);
+
   return (
     <>
       <Head>
