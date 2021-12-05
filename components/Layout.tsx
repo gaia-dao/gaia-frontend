@@ -69,6 +69,7 @@ const LinkItems: Array<LinkItemProps> = [
 
 interface BondLinkItemProps {
   name: string;
+  slug: string;
   discount: string;
   link: string;
   bondPrice: number;
@@ -92,7 +93,7 @@ const ExternalLinks: Array<LinkItemProps> = [
     isExternal: false,
   },
   {
-    name: 'Documentation',
+    name: 'Docs',
     link: 'https://gaia-dao.gitbook.io/gaia-dao/',
     icon: VscBook,
     isExternal: true,
@@ -102,8 +103,8 @@ const ExternalLinks: Array<LinkItemProps> = [
 const bondingInitialState = [
   {
     name: 'wETH',
+    slug: 'weth',
     discount: '10.54',
-    link: '/bond/weth',
     bondPrice: 0.1,
     marketPrice: 0.1,
     yourBalance: 0.1,
@@ -114,19 +115,19 @@ const bondingInitialState = [
     vestingTerm: 0.1,
     logos: [
       {
-        src: '/images/tokens/weth.png',
+        src: 'weth.png',
         name: 'wETH',
       },
       {
-        src: '/images/tokens/gaia.png',
+        src: 'gaia.png',
         name: 'Gaia',
       },
     ],
   },
   {
     name: 'OHM',
+    slug: 'ohm',
     discount: '2.32%',
-    link: '/bond/ohm',
     bondPrice: 0.1,
     marketPrice: 0.1,
     yourBalance: 0.1,
@@ -137,19 +138,19 @@ const bondingInitialState = [
     vestingTerm: 0.1,
     logos: [
       {
-        src: '/images/tokens/weth.png',
+        src: 'weth.png',
         name: 'wETH',
       },
       {
-        src: '/images/tokens/gaia.png',
+        src: 'gaia.png',
         name: 'Gaia',
       },
     ],
   },
   {
     name: 'GAIA-DAI LP',
+    slug: 'gaia-dai-lp',
     discount: '23.23',
-    link: '/gaia-dai-lp',
     bondPrice: 0.1,
     marketPrice: 0.1,
     yourBalance: 0.1,
@@ -160,19 +161,19 @@ const bondingInitialState = [
     vestingTerm: 0.1,
     logos: [
       {
-        src: '/images/tokens/weth.png',
+        src: 'weth.png',
         name: 'wETH',
       },
       {
-        src: '/images/tokens/gaia.png',
+        src: 'gaia.png',
         name: 'Gaia',
       },
     ],
   },
   {
     name: 'GAIA-AVX LP',
+    slug: 'gaia-avx-lp',
     discount: '11.32',
-    link: '/gaia-avx-lp',
     bondPrice: 0.1,
     marketPrice: 0.1,
     yourBalance: 0.1,
@@ -183,11 +184,11 @@ const bondingInitialState = [
     vestingTerm: 0.1,
     logos: [
       {
-        src: '/images/tokens/weth.png',
+        src: 'weth.png',
         name: 'wETH',
       },
       {
-        src: '/images/tokens/gaia.png',
+        src: 'gaia.png',
         name: 'Gaia',
       },
     ],
@@ -310,7 +311,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
           return (
             <Link
               key={key}
-              href={bond.link}
+              href={`/bond/${bond.slug}`}
               fontSize="sm"
               py="1"
               mx="2"

@@ -15,60 +15,6 @@ import {
   AvatarGroup,
 } from '@chakra-ui/react';
 
-const data = [
-  {
-    logos: [
-      {
-        src: '/images/tokens/weth.png',
-        name: 'wETH',
-      },
-      {
-        src: '/images/tokens/gaia.png',
-        name: 'Gaia',
-      },
-    ],
-    bond: 'GAIA-USDC LP',
-    price: '43.34%',
-    roi: '543,434',
-    purchased: '0 gaia',
-    link: 'https://example.com/',
-  },
-  {
-    logos: [
-      {
-        src: '/images/tokens/weth.png',
-        name: 'wETH',
-      },
-      {
-        src: '/images/tokens/gaia.png',
-        name: 'Gaia',
-      },
-    ],
-    bond: 'GAIA-DAI',
-    price: '43.34%',
-    roi: '543,434',
-    purchased: '0 gaia',
-    link: 'https://example.com/',
-  },
-  {
-    logos: [
-      {
-        src: '/images/tokens/weth.png',
-        name: 'wETH',
-      },
-      {
-        src: '/images/tokens/gaia.png',
-        name: 'Gaia',
-      },
-    ],
-    bond: 'GAIA-USDC',
-    price: '43.34%',
-    roi: '543,434',
-    purchased: '0 gaia',
-    link: 'https://example.com/',
-  },
-];
-
 export const columns = [
   {
     Header: '',
@@ -80,7 +26,11 @@ export const columns = [
       return (
         <AvatarGroup size="md">
           {data.map((logo: any) => (
-            <Avatar key={logo.name} src={logo.src} name={logo.name} />
+            <Avatar
+              key={logo.name}
+              src={`/images/tokens/${logo.src}`}
+              name={logo.name}
+            />
           ))}
         </AvatarGroup>
       );
@@ -88,11 +38,11 @@ export const columns = [
   },
   {
     Header: 'Bond',
-    accessor: 'bond',
+    accessor: 'name',
   },
   {
     Header: 'Price',
-    accessor: 'price',
+    accessor: 'bondPrice',
   },
   {
     Header: 'ROI',
@@ -100,11 +50,11 @@ export const columns = [
   },
   {
     Header: 'Purchased',
-    accessor: 'purchased',
+    accessor: 'yourBalance',
   },
   {
     Header: '',
-    accessor: 'link',
+    accessor: 'slug',
     Cell: function LinkCell(data: any) {
       return (
         <Link href={data} passhref="true" isExternal>
@@ -115,7 +65,7 @@ export const columns = [
   },
 ];
 
-const BondingTable = () => {
+const BondingTable = ({ data }) => {
   return (
     <Box overflowX="scroll">
       <Table my="8" fontSize="sm">

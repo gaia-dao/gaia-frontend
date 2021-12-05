@@ -14,9 +14,8 @@ import Layout, { BondingContext } from '../../components/Layout';
 import BondingTable from '../../components/Bonding/BondingTable';
 
 const Bond = () => {
-  const value = useContext(BondingContext);
-  console.log(value);
-  console.log(value);
+  const bonds = useContext(BondingContext);
+  console.log(bonds);
 
   return (
     <>
@@ -47,7 +46,7 @@ const Bond = () => {
               </Text>
             </Box>
           </SimpleGrid>
-          <BondingTable />
+          <BondingTable data={bonds} />
         </Box>
       </Layout>
     </>
