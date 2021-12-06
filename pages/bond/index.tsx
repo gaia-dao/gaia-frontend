@@ -12,6 +12,7 @@ import {
 } from '@chakra-ui/react';
 import Layout, { BondingContext } from '../../components/Layout';
 import BondingTable from '../../components/Bonding/BondingTable';
+import InfoPopover from '../../components/InfoPopover';
 
 const Bond = () => {
   const bonds = useContext(BondingContext);
@@ -40,7 +41,13 @@ const Bond = () => {
               </Text>
             </Box>
             <Box>
-              <Text fontSize="lg">GAIA Price</Text>
+              <Text fontSize="lg">
+                GAIA Price{' '}
+                <InfoPopover
+                  header="Gaia Price"
+                  content="This is the current price of Gaia"
+                />
+              </Text>
               <Text fontSize="xl">
                 <b>12,433,234,332</b>
               </Text>
