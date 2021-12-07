@@ -4,6 +4,7 @@ import React, {
   useEffect,
   createContext,
   useContext,
+  useState,
 } from 'react';
 import {
   IconButton,
@@ -53,6 +54,7 @@ import {
 import { useWalletProvider, WalletProvider } from '../hooks/WalletProvider';
 import { truncateAddress } from '../utils';
 import Logo from './Logo';
+import { getGasPrice } from '../helpers/get-gas-price';
 
 interface LinkItemProps {
   name: string;
@@ -398,9 +400,16 @@ const NavItem = ({ icon, link, children, ...rest }: NavItemProps) => {
 interface MobileProps extends FlexProps {
   onOpen: () => void;
 }
+
 const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
   const { connect, disconnect, address, connected } = useWalletProvider();
   const { colorMode, toggleColorMode } = useColorMode();
+  const [gasPrice, setGasPrice] = useState<number>(0);
+
+  useEffect(() => {
+    // getGasPrice();
+  }, []);
+
   return (
     <Flex
       ml={{ base: 0, md: 60 }}
@@ -433,6 +442,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
       </Link>
 
       <HStack spacing={{ base: '0', md: '6' }}>
+        <Text fontSize="md">{gasPrice}</Text>
         <IconButton
           size="lg"
           variant="ghost"
