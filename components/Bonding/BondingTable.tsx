@@ -57,7 +57,7 @@ export const columns = [
     accessor: 'slug',
     Cell: function LinkCell(data: any) {
       return (
-        <Link href={data} passhref="true" isExternal>
+        <Link href={`/bond/${data}`}>
           <Button>Bond</Button>
         </Link>
       );

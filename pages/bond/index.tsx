@@ -42,7 +42,7 @@ const Bond = () => {
             </Box>
             <Box>
               <Text fontSize="lg">
-                GAIA Price{' '}
+                GAIA Price
                 <InfoPopover
                   header="Gaia Price"
                   content="This is the current price of Gaia"

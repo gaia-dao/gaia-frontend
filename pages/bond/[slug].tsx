@@ -13,6 +13,7 @@ import {
   HStack,
   Avatar,
   AvatarGroup,
+  Skeleton,
 } from '@chakra-ui/react';
 import Layout, { BondingContext } from '../../components/Layout';
 
@@ -28,10 +29,13 @@ const BondItem = () => {
   const bond = bonds.find((b) => b.slug === slug);
 
   console.log(bond);
+  console.log('!bond');
+  console.log(!bond);
+  console.log('Bond Slug');
 
-  if (!bond) {
-    return <div>Bond not found</div>;
-  }
+  // if (!bond) {
+  //   return <div>Bond not found</div>;
+  // }
 
   return (
     <>
@@ -42,12 +46,18 @@ const BondItem = () => {
 
       <Layout>
         <Box border="1px" borderColor={borderColor} borderRadius={4} p="4vw">
-          {/* <AvatarGroup size="md">
-            {bond.logos.map((logo: any) => (
-              <Avatar key={logo.name} src={logo.src} name={logo.name} />
-            ))}
-          </AvatarGroup> */}
-          <Heading mb="8">{bond.name}</Heading>
+          <AvatarGroup size="md">
+            {!bond ? (
+              <Skeleton />
+            ) : (
+              bond.logos.map((logo: any) => (
+                <Avatar key={logo.name} src={logo.src} name={logo.name} />
+              ))
+            )}
+          </AvatarGroup>
+          <Heading mb="8">
+            {!bond ? <Skeleton height="20px" /> : bond.name}
+          </Heading>
           <SimpleGrid
             columns={[1, 1, 2]}
             spacing={10}
@@ -57,39 +67,41 @@ const BondItem = () => {
             <Box>
               <Text fontSize="lg">Bond Price</Text>
               <Text fontSize="xl">
-                <b>{bond.bondPrice}</b>
+                <b>{!bond ? <Skeleton height="20px" /> : bond.bondPrice}</b>
               </Text>
             </Box>
             <Box>
               <Text fontSize="lg">Market Price</Text>
               <Text fontSize="xl">
-                <b>{bond.marketPrice}</b>
+                <b>{!bond ? <Skeleton height="20px" /> : bond.marketPrice}</b>
               </Text>
             </Box>
           </SimpleGrid>
           <HStack justifyContent="space-between">
             <Text>Your Balance</Text>
-            <Text>{bond.yourBalance}</Text>
+            <Text>{!bond ? <Skeleton height="20px" /> : bond.yourBalance}</Text>
           </HStack>
           <HStack justifyContent="space-between">
             <Text>You Will Get</Text>
-            <Text>{bond.youGet}</Text>
+            <Text>{!bond ? <Skeleton height="20px" /> : bond.youGet}</Text>
           </HStack>
           <HStack justifyContent="space-between">
             <Text>Max You Can Buyt</Text>
-            <Text>{bond.maxYouCanBuy}</Text>
+            <Text>
+              {!bond ? <Skeleton height="20px" /> : bond.maxYouCanBuy}
+            </Text>
           </HStack>
           <HStack justifyContent="space-between">
             <Text>ROI</Text>
-            <Text>{bond.roi}</Text>
+            <Text>{!bond ? <Skeleton height="20px" /> : bond.roi}</Text>
           </HStack>
           <HStack justifyContent="space-between">
             <Text>Debt Ratio</Text>
-            <Text>{bond.debtRatio}</Text>
+            <Text>{!bond ? <Skeleton height="20px" /> : bond.debtRatio}</Text>
           </HStack>
           <HStack justifyContent="space-between">
             <Text>Vesting Term</Text>
-            <Text>{bond.vestingTerm}</Text>
+            <Text>{!bond ? <Skeleton height="20px" /> : bond.vestingTerm}</Text>
           </HStack>
         </Box>
       </Layout>
