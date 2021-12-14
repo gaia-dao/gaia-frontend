@@ -27,9 +27,9 @@ export const gaia = new StableBond({
   tokensInStrategy: '0000000000000000000000000000000000000000',
 });
 
-export const gaiaDai = new CustomLPBond({
-  name: 'gaia_dai',
-  displayName: 'GAIA/DAI',
+export const gaiaEth = new CustomLPBond({
+  name: 'gaia_eth',
+  displayName: 'GAIA/ETH',
   bondToken: 'ARBITRUM',
   bondIconSvg: GaiaIcon,
   bondContractABI: LpBondContract,
@@ -43,6 +43,6 @@ export const gaiaDai = new CustomLPBond({
   lpUrl: 'https://uniswap.org/lp/gaia-dai',
 });
 
-const bonds = [gaia, gaiaDai];
+const bonds = [gaia, gaiaEth];
 
 export default bonds;
